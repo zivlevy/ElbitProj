@@ -1,0 +1,116 @@
+<div class="container-fluid">
+  <div class="row">
+    <div ui-grid="$ctrl.gridOptions" ui-grid-edit class="myGrid"></div>
+  </div>
+<div class="row">
+  <div ng-if="$ctrl.chartObject">
+    <!--<ziv-dcgraph dimension="$ctrl.chartObject"></ziv-dcgraph>-->
+    <!--<div dc-chart="barChart" dc-width="500" dc-height="100"  dc-center-bar="true" dc-y-ticks="0"  dc-x-axis-label="'this is the label'" dc-x="d3.scale.linear().domain([0, 12])" dc-dimension="$ctrl.chartObject" dc-group="$ctrl.chartGroup" class="dc-chart"></div>-->
+    <ziv-dcgraph dimension="$ctrl.chartObject" group="$ctrl.chartGroup"></ziv-dcgraph>
+  </div>
+</div>
+
+  <div class="row">
+
+    <!-- List-->
+    <div class="col-sm-4">
+      <table class="table table-striped table-hover table-bordered table-fixed1" >
+        <thead>
+        <th class="col-md-2">Picture</th>
+        <th class="col-md-10">name</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr  ng-repeat="person in $ctrl.persons" ng-click="$ctrl.clicked(person)">
+          <td class="col-md-2 "><img ng-src="{{person.thumbImageURL}}"></td>
+          <td ng-hide="person.edit"class="col-md-10 " style="padding:0; margin:0;">{{person.name}}</td>
+          <td ng-show="person.edit"><input type="text" ng-model="person.name"></td>
+
+
+          <!--<td class="col-xs-6">{{person.address}}</td>-->
+
+          <td>
+
+            <button class="btn btn-success btn-xs" ng-click="$ctrl.toggleEdit($index)">
+              <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+            <button class="btn btn-danger btn-xs" ng-click="$ctrl.deletePerson(person)">
+              <span class="glyphicon glyphicon-remove"></span>
+            </button>
+
+          </td>
+        </tr>
+        </tbody>
+        <tr>
+          <td class=""><input type="text" ng-model="$ctrl.newPerson.name"></td>
+          <td class=""><input type="text" ng-model="$ctrl.newPerson.address"></td>
+          <td>
+            <button class="btn btn-primary" ng-click="$ctrl.addNewPerson()">Add New</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!--Detail-->
+    <div class="col-sm-8 detail">
+      <form class="form" name="form" novalidate>
+        <div class="row">
+          <!--picture-->
+          <div class="col-sm-3">
+            <img ngf-thumbnail="$ctrl.person.imageURL || '../assets/images/default-avatar.png' "  ngf-drop ng-model="$ctrl.picFile" ngf-pattern="image/*"
+                 class="cropArea">
+
+            </img>
+          </div>
+
+          <div class="col-sm-9">
+            <!--Name-->
+            <div class="row">
+              <div class="form-group">
+                <input type="text" name="name" class="form-control" ng-model="$ctrl.person.name" placeholder="Name" required autofocus>
+              </div>
+            </div>
+            <!--Description-->
+            <div class="row">
+              <div class="form-group">
+                <textarea type="text" name="description" class="form-control" rows="4" ng-model="$ctrl.person.description" placeholder="Description" ></textarea>
+              </div>
+            </div>
+            <!--Address-->
+            <div class="row">
+              <div class="form-group">
+                <input type="text" name="address" class="form-control" ng-model="$ctrl.person.address" placeholder="Address">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!--iff-->
+          <div class="col-sm-3">
+            <div class="form-group">
+              <select class="form-control" type="text" name="iff"  ng-model="$ctrl.person.iff">
+                <option value="enemy">Enemy</option>
+                <option value="friend">Friend</option>
+                <option value="own">Own Force</option>
+              </select>
+            </div>
+          </div>
+          <!--Tags-->
+          <div class="col-sm-9">
+            <div class="form-group">
+              <input type="text" name="tags" class="form-control" ng-model="$ctrl.person.tags" placeholder="Tags">
+            </div>
+            <!--Submit button-->
+            <button class="btn-danger btn-lg" ng-hide="!form.$dirty" type="submit" ng-click="$ctrl.addNew()">Submit</button>
+            <button class="btn-success btn-lg" ng-hide="!form.$dirty" type="submit" ng-click="$ctrl.cancel()">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
