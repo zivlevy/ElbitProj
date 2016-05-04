@@ -6,7 +6,7 @@
       this.appName = appConfig.appName;
       this.appVersion = appConfig.appVersion;
       /*******************************************
-       Resize leaflet to screen width and height
+       Resize to screen width and height
        ******************************************/
       angular.element($window).on("resize", resizeScreenAdjustments).trigger("resize");
 
