@@ -1,0 +1,41 @@
+.navbar-brand {
+  padding: 0px; /* firefox bug fix */
+  height: 30px;
+}
+.navbar-brand>img {
+  height: 100%;
+  padding: 3px; /* fefox bug fix */
+  padding-right: 20px;
+  width: auto;
+}
+
+.navbar {
+  margin: 0;
+  min-height:30px;
+  background-color:lightsteelblue;
+  padding-left: 20px;
+  padding-right: 20px;
+  nargin:0;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #fff;
+  background: #105cb6;
+  height:30px;
+}
+
+
+.nav >li >a  {
+  height:30px;
+  padding-top: 8px;
+  padding-bottom: 5px;
+
+}
+.navbar-text {
+  padding-top: 8px;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}

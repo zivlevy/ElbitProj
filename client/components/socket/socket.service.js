@@ -53,7 +53,19 @@ angular.module('elbitApp')
          */
         socket.on(modelName + ':remove', function (item) {
           var event = 'deleted';
-          _.remove(array, {_id: item._id});
+          /////
+          var oldItem = _.find(array, {_id: item._id});
+          var index = array.indexOf(oldItem);
+
+
+          // replace oldItem if it exists
+          // otherwise just add item to the collection
+          if (oldItem) {
+            array.splice(index, 1);
+          }
+          //
+          ///////
+          //_.remove(array, {_id: item._id});
           cb(event, item, array);
         });
       },

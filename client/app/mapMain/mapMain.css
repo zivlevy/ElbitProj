@@ -1,3 +1,17 @@
 .navbar {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
+
+.row {
+  margin:0;
+}
+.leftbar {
+  padding:0;
+  background-color: slategrey ;
+
+}
+
+.mapcol {
+  padding:0;
+}
+

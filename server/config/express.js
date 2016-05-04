@@ -20,6 +20,7 @@ import session from 'express-session';
 import connectMongo from 'connect-mongo';
 import mongoose from 'mongoose';
 var MongoStore = connectMongo(session);
+var  multer  = require('multer') ;
 
 export default function(app) {
   var env = app.get('env');
@@ -30,6 +31,7 @@ export default function(app) {
   app.use(compression());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
+  app.use(multer({dest:'uploads'}).any());
   app.use(methodOverride());
   app.use(cookieParser());
   app.use(passport.initialize());
@@ -51,7 +53,7 @@ export default function(app) {
    * Lusca - express server security
    * https://github.com/krakenjs/lusca
    */
-  if ('test' !== env) {
+  if ('test' === env) {
     app.use(lusca({
       csrf: {
         angular: true

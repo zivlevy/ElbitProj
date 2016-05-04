@@ -17,6 +17,11 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/ent_route/ent_route.socket').register(socket);
+  require('../api/event/event.socket').register(socket);
+  require('../api/info/info.socket').register(socket);
+  require('../api/person/person.socket').register(socket);
+  require('../api/sensor/sensor.socket').register(socket);
   require('../api/thing/thing.socket').register(socket);
 
 }
