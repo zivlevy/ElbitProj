@@ -11,11 +11,11 @@ angular.module('elbitApp', [
     'ui.router',
     'ui.bootstrap',
     'validation.match',
-    'leaflet-directive',
     'ngFileUpload',
     'angularDc',
     'underscore',
-    'ui.grid'
+    'ui.grid',
+    'ui-leaflet'
   ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider

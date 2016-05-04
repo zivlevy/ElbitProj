@@ -9,6 +9,7 @@ import path from 'path';
 
 export default function(app) {
   // Insert routes below
+  app.use('/api/sen_cameras', require('./api/sen_camera'));
   app.use('/api/ent_routes', require('./api/ent_route'));
   app.use('/api/events', require('./api/event'));
   app.use('/api/infos', require('./api/info'));

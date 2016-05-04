@@ -1,94 +1,92 @@
 'use strict';
-(function(){
+(function () {
 
   class MapMainComponent {
-    constructor($scope,$window,leafletData,dataStore,info) {
-      this.$scope=$scope;
+    constructor(appConfig, $scope, $window, $http, dataStore, info, leafletData, leafletMapEvents) {
+      this.appConfig = appConfig;
+      this.$scope = $scope;
+      this.$http = $http;
       this.dataStore = dataStore;
-      this.leafletData = leafletData;
       this.info = info;
+      this.leafletData = leafletData;
+      this.leafletMapEvents = leafletMapEvents;
 
-      console.log("const");
       /*******************************************
        Resize leaflet to screen width and height
        ******************************************/
       angular.element($window).on("resize", resizeScreenAdjustments).trigger("resize");
 
       function resizeScreenAdjustments() {
-        $('.leftbar').height(angular.element($window).height()-80);
-        $('[name="map"]').height(angular.element($window).height()-80).width($('.mapcol').width());
-
-        leafletData.getMap().then(function(map) {
-          map.invalidateSize();
-        });
+        $('.leftbar').height(angular.element($window).height() - 60);
+        $('#mymap').height(angular.element($window).height() - 60).width($('.mapcol').width());
       }
 
+    };
+
+    $onInit() {
+      var localThis = this;
+
+      //init map
+      this.initMap();
+
+      //setup map events
+      this.setMapEvents();
+
+      //this.info.list().then(result=> {
+      //  console.log(result[0]);
+      //  this.infos = result;
+      //  var heatInfos = [];
+      //  for (var infor in this.infos) {
+      //
+      //    var i = [this.infos[infor].latitude, this.infos[infor].longitude, this.infos[infor].severity];
+      //    heatInfos.push(i);
+      //  }
+      //  this.leafletData.getMap('mymap').then(map=> {
+      //    var heat = L.heatLayer(heatInfos, {radius: 10}).addTo(map);
+      //  });
+      //});
 
 
-      /*******************************************
-       set map center for new position on refresh
-       or previous visited
-       ******************************************/
-      if (dataStore.center){
-        $scope.center = dataStore.center;
-      } else {
-        $scope.center = {
-          lat: 30.76,
-          lng: 34.68,
-          zoom: 12
-        }
-        dataStore.center = $scope.center;
-      }
-      angular.extend($scope, {
-        defaults: {
-          scrollWheelZoom: false
-        },
+    };
+
+    initMap() {
+      angular.extend(this.$scope, {
         events: {
           map: {
-            enable: ['zoomstart', 'drag', 'click', 'mousemove'],
+            enable: ['click', 'drag', 'blur', 'touchstart'],
             logic: 'emit'
           }
+        },
+        center: this.appConfig.mapCenter,
+        defaults: {
+          tileLayer: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+          maxZoom: 18,
+          minZoom: 5,
+          tileLayerOptions: {
+            detectRetina: true,
+            reuseTiles: true,
+          },
+          scrollWheelZoom: true
         }
       });
-      // map init
+    };
 
-
-
-      /*******************************************
-       Next Function
-       ******************************************/
-
-    }
-
-    $onInit (){
-      var localThis=this;
-      this.info.list().then(result=>{
-        console.log(result[0]);
-        this.infos=result;
-        var heatInfos = [];
-        for  (var infor in this.infos) {
-
-          var i = [this.infos[infor].latitude,this.infos[infor].longitude, this.infos[infor].severity];
-          heatInfos.push(i);
-        }
-
-        this.leafletData.getMap().then(map=> {
-          this.map=map;
-          var heat = L.heatLayer(heatInfos, {radius: 10}).addTo(this.map);
+    setMapEvents() {
+      var localThis = this;
+      this.leafletData.getMap('mymap').then(map=> {
+        console.log("dasdfasdfasdf");
+        map.on('click', function (e) {
+          var point = {name: 'cam12345', geometry: {type: 'Point', coordinates: [e.latlng.lng, e.latlng.lat]}};
+          var pJson = angular.toJson(point);
+          console.log(pJson);
+          localThis.$http.post('/api/sen_cameras', pJson).then(res=> {
+            console.log(res.data);
+          });
         });
       });
-      console.log("here now ///////");
-
-
-
-      this.$scope.$on('leafletDirectiveMap.mousemove',function(event,args) {
-        localThis.$scope.eventDetected = "MouseMove";
-        //
-        console.log(args.leafletEvent.latlng);
-      });
-
     }
   }
+
 
   angular.module('elbitApp')
     .component('mapMain', {

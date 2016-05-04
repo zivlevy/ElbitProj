@@ -17,6 +17,7 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/sen_camera/sen_camera.socket').register(socket);
   require('../api/ent_route/ent_route.socket').register(socket);
   require('../api/event/event.socket').register(socket);
   require('../api/info/info.socket').register(socket);
@@ -43,6 +44,7 @@ export default function(socketio) {
   // }));
 
   socketio.on('connection', function(socket) {
+    socket.setMaxListeners(0);
     socket.address = socket.request.connection.remoteAddress +
       ':' + socket.request.connection.remotePort;
 

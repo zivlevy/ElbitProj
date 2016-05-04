@@ -14,9 +14,9 @@
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-      <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
       <link rel="stylesheet" href="bower_components/dcjs/dc.css" />
       <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css" />
+      <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -28,10 +28,8 @@
       <link rel="stylesheet" href="app/account/signup/signup.css">
       <link rel="stylesheet" href="app/admin/admin.css">
       <link rel="stylesheet" href="app/app.css">
-      <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="app/mapMain/mapMain.css">
       <link rel="stylesheet" href="app/person/person.css">
-      <link rel="stylesheet" href="app/test/test.css">
       <link rel="stylesheet" href="app/zivDcgraph/zivDcgraph.css">
       <link rel="stylesheet" href="components/footer/footer.css">
       <link rel="stylesheet" href="components/modal/modal.css">
@@ -64,6 +62,8 @@
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
+
+
     <!-- build:js({client,node_modules}) app/vendor.js -->
       <!-- bower:js -->
       <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -76,8 +76,6 @@
       <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
-      <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
-      <script src="bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
       <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
       <script src="bower_components/d3/d3.js"></script>
       <script src="bower_components/crossfilter/crossfilter.js"></script>
@@ -86,6 +84,10 @@
       <script src="bower_components/underscore/underscore.js"></script>
       <script src="bower_components/angular-underscore-module/angular-underscore-module.js"></script>
       <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+      <script src="bower_components/Geolib/dist/geolib.js"></script>
+      <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+      <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
+      <script src="bower_components/ui-leaflet/dist/ui-leaflet.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -95,23 +97,19 @@
       <script src="app/admin/admin.module.js"></script>
       <script src="components/auth/auth.module.js"></script>
       <script src="components/util/util.module.js"></script>
-      <script src="app/person/person.js"></script>
+      <script src="app/services/info/info.service.js"></script>
       <script src="app/account/settings/settings.controller.js"></script>
       <script src="app/account/signup/signup.controller.js"></script>
       <script src="app/admin/admin.controller.js"></script>
       <script src="app/about/about.controller.js"></script>
       <script src="app/admin/admin.router.js"></script>
       <script src="app/app.constant.js"></script>
-      <script src="app/dataStore/dataStore.service.js"></script>
-      <script src="app/info/info.service.js"></script>
-      <script src="app/main/main.controller.js"></script>
-      <script src="app/main/main.js"></script>
       <script src="app/mapMain/mapMain.controller.js"></script>
       <script src="app/mapMain/mapMain.js"></script>
       <script src="app/person/person.controller.js"></script>
+      <script src="app/person/person.js"></script>
+      <script src="app/services/dataStore/dataStore.service.js"></script>
       <script src="app/about/about.js"></script>
-      <script src="app/test/test.controller.js"></script>
-      <script src="app/test/test.js"></script>
       <script src="app/zivDcgraph/zivDcgraph.directive.js"></script>
       <script src="app/account/account.js"></script>
       <script src="components/auth/auth.service.js"></script>
@@ -129,5 +127,6 @@
       <!-- endinjector -->
     <!-- endbuild -->
   <script src="./assets/js/leaflet-heat.js"></script>
+
   </body>
 </html>
