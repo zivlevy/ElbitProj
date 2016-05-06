@@ -13,5 +13,3 @@ var EntPhoneSchema = new mongoose.Schema({
 
 export default IntelEntity.discriminator('EntPhone',
   EntPhoneSchema);
-
-
