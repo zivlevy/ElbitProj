@@ -14,4 +14,5 @@ var SensorSchema = new mongoose.Schema({
   },
   options);
 
+
 export default mongoose.model('Sensor', SensorSchema);

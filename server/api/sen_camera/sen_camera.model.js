@@ -7,9 +7,12 @@ var GeoJSON = require('mongoose-geojson-schema');
 
 var SenCameraSchema = new mongoose.Schema({
 
-    geometry: GeoJSON.Point
+    coordinates: mongoose.Schema.Types.Point,
 },
   options);
+
+
+SenCameraSchema.index({ coordinates: '2dsphere' });
 
 export default Sensor.discriminator('SenCamera',
   SenCameraSchema);

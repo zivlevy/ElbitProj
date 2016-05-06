@@ -228,10 +228,13 @@
         map.on('click', function (e) {
           var point = {name: 'cam12345', geometry: {type: 'Point', coordinates: [e.latlng.lng, e.latlng.lat]}};
           var pJson = angular.toJson(point);
-          console.log(pJson);
-          localThis.$http.post('/api/sen_cameras', pJson).then(res=> {
-            console.log(res.data);
-          });
+          //console.log(pJson);
+          //localThis.$http.get('/api/sensors/random').then(res=>{
+          //  console.log(res);
+          //});
+          //localThis.$http.post('/api/sen_cameras', pJson).then(res=> {
+          //  console.log(res.data);
+          //});
         });
       });
     }

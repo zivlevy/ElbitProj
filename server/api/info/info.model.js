@@ -1,6 +1,7 @@
 'use strict';
 
 import mongoose from 'mongoose';
+import IntelEntity from '../intelEntity/intelEntity.model';
 
 var InfoSchema = new mongoose.Schema({
   description: String,
@@ -11,8 +12,8 @@ var InfoSchema = new mongoose.Schema({
   updatedAt:  { type: Date, default: Date.now },
   status:   Boolean,
   severity: Number,
-  entities: Array,
-  tags:     String
+  entities: [{type: mongoose.Schema.Types.ObjectId, ref:'IntelEntity' }],
+  tags:     [String]
 });
 
 export default mongoose.model('Info', InfoSchema);

@@ -100,3 +100,19 @@ export function destroy(req, res) {
     .then(removeEntity(res))
     .catch(handleError(res));
 }
+
+// added by Ziv
+// get random sensor from DB
+export function random(req, res) {
+  //count number of sensors
+  Sensor.count({}, function (err, n) {
+    //get randome number out of all
+    n = Math.floor(Math.random() * n);
+    //get the n-th sensor in the collection
+    Sensor.find().skip(n).limit(1).exec(function(err, data) {
+      if(err) res.send(502, "ERROR IN DB DATABASE");
+      res.status(200).json(data);
+    });
+  });
+}
+

@@ -17,13 +17,18 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/ent_person/ent_person.socket').register(socket);
+  require('../api/ent_path/ent_path.socket').register(socket);
+  require('../api/ent_phone/ent_phone.socket').register(socket);
+  require('../api/ent_business/ent_business.socket').register(socket);
+  require('../api/ent_wearhouse/ent_wearhouse.socket').register(socket);
+  require('../api/ent_car/ent_car.socket').register(socket);
+  require('../api/ent_house/ent_house.socket').register(socket);
+  require('../api/intelEntity/intelEntity.socket').register(socket);
   require('../api/sen_camera/sen_camera.socket').register(socket);
-  require('../api/ent_route/ent_route.socket').register(socket);
-  require('../api/event/event.socket').register(socket);
   require('../api/info/info.socket').register(socket);
   require('../api/person/person.socket').register(socket);
   require('../api/sensor/sensor.socket').register(socket);
-  require('../api/thing/thing.socket').register(socket);
 
 }
 

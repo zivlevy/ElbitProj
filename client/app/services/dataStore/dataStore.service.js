@@ -16,13 +16,13 @@ angular.module('elbitApp')
       list: function () {
         var deferred=$q.defer();
         if (!isLoaded){
-          $http.get('/api/persons').then(response => {
+          $http.get('/api/ent_persons').then(response => {
             isLoaded = true;
             persons = response.data;
             deferred.resolve(persons);
 
             //---------  socket support -----------------
-            socket.syncUpdates('person',persons, function(event, person, personslist) {
+            socket.syncUpdates('entPerson',persons, function(event, person, personslist) {
 
             });
 
@@ -37,8 +37,9 @@ angular.module('elbitApp')
        * delete
        *********************/
       delete:function(person){
+        console.log('=============');
         var deferred=$q.defer();
-        $http.delete('/api/persons/' +person._id)
+        $http.delete('/api/ent_persons/' +person._id)
           .then(
             function(response){
               console.log('----------00000000');
@@ -60,7 +61,7 @@ angular.module('elbitApp')
         delete person.__v;
         console.log(person);
         Upload.upload({
-          url: '/api/persons',
+          url: '/api/ent_persons',
           data: person,
         }).then (res=>{
           console.log(res);
@@ -73,7 +74,7 @@ angular.module('elbitApp')
       var deferred=$q.defer();
       console.log(person);
       Upload.upload({
-        url: '/api/persons/' +person._id,
+        url: '/api/ent_persons/' +person._id,
         data: person,
         method:'PUT'
       }).then (res=>{

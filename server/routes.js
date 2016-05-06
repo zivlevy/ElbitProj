@@ -9,13 +9,18 @@ import path from 'path';
 
 export default function(app) {
   // Insert routes below
+  app.use('/api/ent_persons', require('./api/ent_person'));
+  app.use('/api/ent_paths', require('./api/ent_path'));
+  app.use('/api/ent_phones', require('./api/ent_phone'));
+  app.use('/api/ent_businesss', require('./api/ent_business'));
+  app.use('/api/ent_wearhouses', require('./api/ent_wearhouse'));
+  app.use('/api/ent_cars', require('./api/ent_car'));
+  app.use('/api/ent_houses', require('./api/ent_house'));
+  app.use('/api/intelEntitys', require('./api/intelEntity'));
   app.use('/api/sen_cameras', require('./api/sen_camera'));
-  app.use('/api/ent_routes', require('./api/ent_route'));
-  app.use('/api/events', require('./api/event'));
   app.use('/api/infos', require('./api/info'));
   app.use('/api/persons', require('./api/person'));
   app.use('/api/sensors', require('./api/sensor'));
-  app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));
 
   app.use('/auth', require('./auth').default);

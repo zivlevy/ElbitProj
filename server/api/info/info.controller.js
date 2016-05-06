@@ -68,7 +68,7 @@ export function index(req, res) {
 
 // Gets a single Info from the DB
 export function show(req, res) {
-  return Info.findById(req.params.id).exec()
+  return Info.findById(req.params.id).populate('entities').exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
