@@ -4,7 +4,7 @@
 
 'use strict';
 
-import EntPhoneEvents from './ent_phone.events';
+import EntPhoneEvents from './ent_phone.events.js';
 
 // Model events to emit
 var events = ['save', 'remove'];

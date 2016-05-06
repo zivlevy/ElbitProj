@@ -4,7 +4,7 @@
 
 'use strict';
 
-import EntWearhouseEvents from './ent_wearhouse.events';
+import EntWearhouseEvents from './ent_wearhouse.events.js';
 
 // Model events to emit
 var events = ['save', 'remove'];

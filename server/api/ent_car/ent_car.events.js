@@ -5,7 +5,7 @@
 'use strict';
 
 import {EventEmitter} from 'events';
-import EntCar from './ent_car.model';
+import EntCar from './ent_car.model.js';
 var EntCarEvents = new EventEmitter();
 
 // Set max event listeners (0 == unlimited)

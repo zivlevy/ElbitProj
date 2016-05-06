@@ -1,7 +1,7 @@
 'use strict';
 
 var express = require('express');
-var controller = require('./ent_car.controller');
+var controller = require('./ent_car.controller.js');
 
 var router = express.Router();
 

@@ -10,7 +10,7 @@
 'use strict';
 
 import _ from 'lodash';
-import EntHouse from './ent_house.model';
+import EntHouse from './ent_house.model.js';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;

@@ -5,7 +5,7 @@
 'use strict';
 
 import {EventEmitter} from 'events';
-import EntBusiness from './ent_business.model';
+import EntBusiness from './ent_business.model.js';
 var EntBusinessEvents = new EventEmitter();
 
 // Set max event listeners (0 == unlimited)

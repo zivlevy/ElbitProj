@@ -4,7 +4,7 @@
 
 'use strict';
 
-import EntBusinessEvents from './ent_business.events';
+import EntBusinessEvents from './ent_business.events.js';
 
 // Model events to emit
 var events = ['save', 'remove'];

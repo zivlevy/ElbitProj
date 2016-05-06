@@ -4,7 +4,7 @@
 
 'use strict';
 
-import EntCarEvents from './ent_car.events';
+import EntCarEvents from './ent_car.events.js';
 
 // Model events to emit
 var events = ['save', 'remove'];

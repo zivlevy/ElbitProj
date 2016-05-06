@@ -1,7 +1,7 @@
 'use strict';
 
 var express = require('express');
-var controller = require('./ent_wearhouse.controller');
+var controller = require('./ent_wearhouse.controller.js');
 
 var router = express.Router();
 

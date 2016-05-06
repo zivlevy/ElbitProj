@@ -5,7 +5,7 @@
 'use strict';
 
 import {EventEmitter} from 'events';
-import EntPerson from './ent_person.model';
+import EntPerson from './ent_person.model.js';
 var EntPersonEvents = new EventEmitter();
 
 // Set max event listeners (0 == unlimited)

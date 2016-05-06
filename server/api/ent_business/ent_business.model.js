@@ -1,7 +1,7 @@
 'use strict';
 
 import mongoose from 'mongoose';
-import IntelEntity from '../intelEntity/intelEntity.model';
+import IntelEntity from '../intelEntity/intelEntity.model.js';
 var GeoJSON = require('mongoose-geojson-schema');
 
 var options = {discriminatorKey: 'kind'};

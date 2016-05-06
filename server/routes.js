@@ -19,7 +19,6 @@ export default function(app) {
   app.use('/api/intelEntitys', require('./api/intelEntity'));
   app.use('/api/sen_cameras', require('./api/sen_camera'));
   app.use('/api/infos', require('./api/info'));
-  app.use('/api/persons', require('./api/person'));
   app.use('/api/sensors', require('./api/sensor'));
   app.use('/api/users', require('./api/user'));
 

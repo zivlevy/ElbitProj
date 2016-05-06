@@ -10,7 +10,7 @@
 'use strict';
 
 import _ from 'lodash';
-import EntPerson from './ent_person.model';
+import EntPerson from './ent_person.model.js';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;

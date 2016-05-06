@@ -4,7 +4,7 @@
 
 'use strict';
 
-import EntHouseEvents from './ent_house.events';
+import EntHouseEvents from './ent_house.events.js';
 
 // Model events to emit
 var events = ['save', 'remove'];

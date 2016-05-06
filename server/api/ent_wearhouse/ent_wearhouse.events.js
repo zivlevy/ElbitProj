@@ -5,7 +5,7 @@
 'use strict';
 
 import {EventEmitter} from 'events';
-import EntWearhouse from './ent_wearhouse.model';
+import EntWearhouse from './ent_wearhouse.model.js';
 var EntWearhouseEvents = new EventEmitter();
 
 // Set max event listeners (0 == unlimited)

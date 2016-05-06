@@ -27,7 +27,6 @@ function onConnect(socket) {
   require('../api/intelEntity/intelEntity.socket').register(socket);
   require('../api/sen_camera/sen_camera.socket').register(socket);
   require('../api/info/info.socket').register(socket);
-  require('../api/person/person.socket').register(socket);
   require('../api/sensor/sensor.socket').register(socket);
 
 }

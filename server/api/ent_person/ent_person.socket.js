@@ -4,7 +4,7 @@
 
 'use strict';
 
-import EntPersonEvents from './ent_person.events';
+import EntPersonEvents from './ent_person.events.js';
 
 // Model events to emit
 var events = ['save', 'remove'];

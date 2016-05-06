@@ -4,7 +4,7 @@
 
 'use strict';
 
-import EntPathEvents from './ent_path.events';
+import EntPathEvents from './ent_path.events.js';
 
 // Model events to emit
 var events = ['save', 'remove'];

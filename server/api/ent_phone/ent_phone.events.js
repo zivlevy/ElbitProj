@@ -5,7 +5,7 @@
 'use strict';
 
 import {EventEmitter} from 'events';
-import EntPhone from './ent_phone.model';
+import EntPhone from './ent_phone.model.js';
 var EntPhoneEvents = new EventEmitter();
 
 // Set max event listeners (0 == unlimited)

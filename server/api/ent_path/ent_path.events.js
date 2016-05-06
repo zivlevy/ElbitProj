@@ -5,7 +5,7 @@
 'use strict';
 
 import {EventEmitter} from 'events';
-import EntPath from './ent_path.model';
+import EntPath from './ent_path.model.js';
 var EntPathEvents = new EventEmitter();
 
 // Set max event listeners (0 == unlimited)

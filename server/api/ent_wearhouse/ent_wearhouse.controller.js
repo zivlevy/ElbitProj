@@ -10,7 +10,7 @@
 'use strict';
 
 import _ from 'lodash';
-import EntWearhouse from './ent_wearhouse.model';
+import EntWearhouse from './ent_wearhouse.model.js';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;

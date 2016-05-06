@@ -4,7 +4,7 @@ var GeoJSON = require('mongoose-geojson-schema');
 import mongoose from 'mongoose';
 
 
-import IntelEntity from '../intelEntity/intelEntity.model';
+import IntelEntity from '../intelEntity/intelEntity.model.js';
 var options = {discriminatorKey: 'kind'};
 
 var EntPathSchema = new mongoose.Schema({

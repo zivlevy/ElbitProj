@@ -5,7 +5,7 @@
 'use strict';
 
 import {EventEmitter} from 'events';
-import EntHouse from './ent_house.model';
+import EntHouse from './ent_house.model.js';
 var EntHouseEvents = new EventEmitter();
 
 // Set max event listeners (0 == unlimited)

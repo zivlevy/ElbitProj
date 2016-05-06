@@ -6,7 +6,6 @@
 'use strict';
 
 import User from '../api/user/user.model';
-import Person from '../api/person/person.model';
 import entPerson from '../api/ent_person/ent_person.model';
 import Info from '../api/info/info.model';
 var Chance = require ('chance');
@@ -40,25 +39,7 @@ User.find({}).remove()
   });
 
 
-Person.find({}).remove()
-  .then(() => {
-    var numberOfPersons = 200;
-    getUser(numberOfPersons,function(arr){
-      for (var i = 0; i < numberOfPersons; i++) {
-        Person.create({
-          //name: chance.name({ gender: "male" }),
-          name: arr[i].name.first + ' ' + arr[i].name.last,
-          description: 'description' + i,
-          address: chance.address({country:'us'}),
-          imageURL: arr[i].picture.large,
-          thumbImageURL: arr[i].picture.thumbnail,
-          tags: 'tag' + i,
-          iff: 'enemy',
-          active: true
-        });
-      }
-    });
-  });
+
 
 //init intel entities
 

@@ -10,7 +10,7 @@
 'use strict';
 
 import _ from 'lodash';
-import EntPhone from './ent_phone.model';
+import EntPhone from './ent_phone.model.js';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;

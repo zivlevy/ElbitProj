@@ -1,6 +1,6 @@
 'use strict';
 
-var app = require('../..');
+var app = require('../../index.js');
 import request from 'supertest';
 
 var newEntPerson;

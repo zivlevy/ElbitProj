@@ -2,7 +2,7 @@
 
 import mongoose from 'mongoose';
 
-import IntelEntity from '../intelEntity/intelEntity.model';
+import IntelEntity from '../intelEntity/intelEntity.model.js';
 var options = {discriminatorKey: 'kind'};
 
 var EntPersonSchema = new mongoose.Schema({

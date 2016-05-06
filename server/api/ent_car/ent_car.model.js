@@ -2,7 +2,7 @@
 
 import mongoose from 'mongoose';
 var GeoJSON = require('mongoose-geojson-schema');
-import IntelEntity from '../intelEntity/intelEntity.model';
+import IntelEntity from '../intelEntity/intelEntity.model.js';
 var options = {discriminatorKey: 'kind'};
 
 var EntCarSchema = new mongoose.Schema({
