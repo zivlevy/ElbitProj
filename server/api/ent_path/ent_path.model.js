@@ -9,7 +9,7 @@ var options = {discriminatorKey: 'kind'};
 
 var EntPathSchema = new mongoose.Schema({
     coordinates: mongoose.Schema.Types.Point,
-    polygon: mongoose.Schema.Types.MultiPoint
+    pathCoordinates: mongoose.Schema.Types.MultiPoint
   },
   options);
 

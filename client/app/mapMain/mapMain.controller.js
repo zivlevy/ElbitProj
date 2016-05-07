@@ -2,7 +2,7 @@
 (function () {
 
   class MapMainComponent {
-    constructor(appConfig, $scope, $window, $http, dataStore, info, leafletData, leafletMapEvents) {
+    constructor(appConfig, $scope, $window, $http, dataStore, info, leafletData, leafletMapEvents, _) {
       this.appConfig = appConfig;
       this.$scope = $scope;
       this.$http = $http;
@@ -10,7 +10,8 @@
       this.info = info;
       this.leafletData = leafletData;
       this.leafletMapEvents = leafletMapEvents;
-
+      this._ = _;
+      this.markers = {};
       /*******************************************
        Resize leaflet to screen width and height
        ******************************************/
@@ -50,38 +51,36 @@
     };
 
     initMap() {
-      var markers = {
-        London : {
-          lat: 51.50,
-          lng: -0.082,
-          draggable: false
-        },
-        Manchester: {
-          lat: 53.48,
-          lng: -2.24,
-          draggable: true
-        },
-        Lincoln: {
-          lat: 53.230495,
-          lng: -0.53936,
-          draggable: true
-        },
-        Northhampton: {
-          lat: 52.237892,
-          lng: -0.90087,
-          draggable: true
-        },
-        Worcester: {
-          lat: 52.187404,
-          lng: -2.20275,
-          draggable: true
-        },
-        York: {
-          lat: 53.959317,
-          lng: -1.08215,
-          draggable: true
-        }
-      };
+      //this.markers = {
+      //  osloMarker: {
+      //    lat: 59.91,
+      //    lng: 10.75,
+      //    message: "I want to travel here!",
+      //    focus: true,
+      //    draggable: false
+      //  }
+      //};
+
+      var localThis = this;
+      var myMarkers = {};
+      //init info markers
+      this.info.list().then(result=> {
+        this._.each(result, function (element, index, list) {
+
+
+          var toInsert = {
+              lat: element.coordinates.coordinates[1],
+              lng: element.coordinates.coordinates[0],
+              draggable: true
+          }
+          var markerName = 'mark' + index;
+
+          myMarkers[markerName] = toInsert;
+          console.log(myMarkers);
+        });
+        this.$scope.markers = myMarkers;
+      });
+
       angular.extend(this.$scope, {
         events: {
           map: {
@@ -99,7 +98,7 @@
           },
           scrollWheelZoom: true
         },
-        markers: markers,
+        markers: this.markers,
         center: {
           lat: 32.06250082836163,
           lng: 34.79513347148895,
@@ -125,7 +124,7 @@
               layerOptions: {}
             }
           },
-          overlays:{
+          overlays: {
             lines: {
               name: 'Lines',
               type: 'group',
@@ -145,78 +144,76 @@
                 continuousWorld: true
               }
 
+            }
+            ,
+
+
           }
-,
-
-
-        }
-      },
+        },
         paths: {
-          p1: {
-            color: '#008000',
-            weight: 4,
-            latlngs: [ markers.London, markers.Manchester ],
-            layer: 'lines'
-          },
-          p2: {
-            weight: 3,
-            opacity: 0.5,
-            latlngs: [
-              [ markers.London, markers.Lincoln ],
-              [ markers.Manchester, markers.Worcester]
-            ],
-            type: 'multiPolyline',
-            layer: 'lines'
-
-          },
-          c1: {
-            weight: 2,
-            color: '#ff612f',
-            latlngs: markers.Northhampton,
-            radius: 10000,
-            type: 'circle',
-            layer: 'shapes'
-          },
-          c2: {
-            weight: 2,
-            color: '#ff612f',
-            latlngs: markers.Lincoln,
-            radius: 50,
-            type: 'circleMarker',
-            layer: 'shapes'
-          },
-          pg1: {
-            latlngs: [ markers.London, markers.Worcester, markers.Lincoln ],
-            stroke: false,
-            fillColor: '#ff69b4',
-            type: 'polygon',
-            layer: 'shapes'
-          },
-          pg2: {
-            weight: 1,
-            color: '#2e3974',
-            latlngs: [
-              [ markers.London, markers.Worcester, markers.Northhampton ],
-              [ markers.Manchester, markers.Lincoln, markers.York ]
-            ],
-            type: 'multiPolygon',
-            layer: 'shapes'
-          },
-          r1: {
-            latlngs: [ markers.Lincoln, markers.York ],
-            type: 'rectangle',
-            layer: 'shapes'
-          }
-        }});
+          //p1: {
+          //  color: '#008000',
+          //  weight: 4,
+          //  latlngs: [markers.London, markers.Manchester],
+          //  layer: 'lines'
+          //},
+          //p2: {
+          //  weight: 3,
+          //  opacity: 0.5,
+          //  latlngs: [
+          //    [markers.London, markers.Lincoln],
+          //    [markers.Manchester, markers.Worcester]
+          //  ],
+          //  type: 'multiPolyline',
+          //  layer: 'lines'
+          //
+          //},
+          //c1: {
+          //  weight: 2,
+          //  color: '#ff612f',
+          //  latlngs: markers.Northhampton,
+          //  radius: 10000,
+          //  type: 'circle',
+          //  layer: 'shapes'
+          //},
+          //c2: {
+          //  weight: 2,
+          //  color: '#ff612f',
+          //  latlngs: markers.Lincoln,
+          //  radius: 50,
+          //  type: 'circleMarker',
+          //  layer: 'shapes'
+          //},
+          //pg1: {
+          //  latlngs: [markers.London, markers.Worcester, markers.Lincoln],
+          //  stroke: false,
+          //  fillColor: '#ff69b4',
+          //  type: 'polygon',
+          //  layer: 'shapes'
+          //},
+          //pg2: {
+          //  weight: 1,
+          //  color: '#2e3974',
+          //  latlngs: [
+          //    [markers.London, markers.Worcester, markers.Northhampton],
+          //    [markers.Manchester, markers.Lincoln, markers.York]
+          //  ],
+          //  type: 'multiPolygon',
+          //  layer: 'shapes'
+          //},
+          //r1: {
+          //  latlngs: [markers.Lincoln, markers.York],
+          //  type: 'rectangle',
+          //  layer: 'shapes'
+          //}
+        }
+      });
 
 
       this.leafletData.getMap('mymap').then(map=> {
 
 
       });
-
-
-
 
 
     };
@@ -226,8 +223,10 @@
       this.leafletData.getMap('mymap').then(map=> {
         console.log("dasdfasdfasdf");
         map.on('click', function (e) {
-          var point = {name: 'cam12345', geometry: {type: 'Point', coordinates: [e.latlng.lng, e.latlng.lat]}};
-          var pJson = angular.toJson(point);
+          //var point = {name: 'cam12345', coordinates: {type: 'Point', coordinates: [e.latlng.lng, e.latlng.lat]}};
+          //var pJson = angular.toJson(point);
+          //
+          //
           //console.log(pJson);
           //localThis.$http.get('/api/sensors/random').then(res=>{
           //  console.log(res);
