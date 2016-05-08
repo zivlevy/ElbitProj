@@ -23,7 +23,9 @@ let noCars = 100;
 let noPhones = 100;
 let noBusiness=100;
 let noPath = 100;
-let noInfo = 500;
+let noInfo = 5000;
+
+let radiusInfos = 5000;
 
 User.find({}).remove()
   .then(() => {
@@ -71,7 +73,7 @@ function createInfo() {
             var timeNow = new Date();
             Info.create({
               description: chance.paragraph({sentences: chance.d4()}),
-              coordinates: createRandomPoint(30000),
+              coordinates: createRandomPoint(radiusInfos),
               createdAt: chance.date({
                 year: timeNow.getFullYear(),
                 month: timeNow.getMonth(),
@@ -162,7 +164,7 @@ function newGetUser (number) {
 function createRandomPoint (radius = 5000,center = shared.center) {
   var randomRadius = Math.floor(Math.random()*radius);
   var randomBearing = Math.floor(Math.random() * 360);
-  var rangomPoint = geoLib.computeDestinationPoint({lat:center[0], lon:center[1]}, randomRadius, randomBearing);
+  var rangomPoint = geoLib.computeDestinationPoint({lat:center.lat, lon:center.lng}, randomRadius, randomBearing);
   var point =  {type: 'Point', coordinates: [rangomPoint.longitude, rangomPoint.latitude]};
   return point;
 }

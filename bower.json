@@ -24,13 +24,15 @@
     "angular-ui-grid": "^3.1.1",
     "Geolib": "geolib#^2.0.18",
     "ui-leaflet": "^1.0.0",
-    "ui-leaflet-layers": "*"
+    "PruneCluster": "^1.1.0",
+    "leaflet": "^0.7.7",
+    "leaflet.heat": "Leaflet.heat#*"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.0"
   },
   "resolutions": {
     "angular": "1.5.5",
-    "ui-leaflet": "master"
+    "ui-leaflet": "^1.0.0"
   }
 }
